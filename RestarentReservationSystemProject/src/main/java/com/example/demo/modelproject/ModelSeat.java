@@ -2,26 +2,20 @@ package com.example.demo.modelproject;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="resrvationdetails")
+@Table(name="Resrvation_Details")
 public class ModelSeat {
 	@Id
 		private int bookingid;
-	
 		private String bookingname;
 		private long custnumber;
 		private int totalmembers;
@@ -32,19 +26,6 @@ public class ModelSeat {
 		@JsonFormat(pattern = "HH:mm:ss")
 		private Time endtime;
 		private String custemail;
-		
-		//one to one
-		@OneToMany(cascade = CascadeType.ALL)
-		@JoinColumn(name="fk")
-		private List<SeatModel> bookingdetails;
-		public List<SeatModel> getbookingdetails(){
-			return bookingdetails;
-		}
-		public void setbookingdetails (List<SeatModel>bookingdetails) {
-			this.bookingdetails=bookingdetails;
-		}
-		
-		
 		public int getBookingid() {
 			return bookingid;
 		}
